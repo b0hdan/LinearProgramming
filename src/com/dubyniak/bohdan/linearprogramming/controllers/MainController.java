@@ -60,7 +60,7 @@ public class MainController {
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             dialog.setScene(new Scene(root, 409, 103));
-        }
+        };
         dialog.show();
     }
 
