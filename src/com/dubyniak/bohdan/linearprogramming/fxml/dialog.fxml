@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dubyniak.bohdan.linearprogramming.controllers.MainController">
+    <children>
+        <HBox fx:id="record" spacing="6.0">
+            <children>
+                <TextField fx:id="textFieldK1" prefWidth="50.0" promptText="k1" />
+                <Label text="x1 +">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textFieldK2" prefWidth="50.0" promptText="k2" />
+                <Label text="x2 +">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textFieldYKoef" prefWidth="50.0" promptText="k" />
+                <Label text="y">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            <TextField prefWidth="50.0" promptText="&gt;=" />
+                <TextField fx:id="textFieldB" prefWidth="50.0" promptText="b" />
+            </children>
+            <VBox.margin>
+                <Insets bottom="17.0" left="12.0" right="12.0" top="12.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" spacing="12.0">
+            <children>
+                <Button onAction="#okButtonClicked" defaultButton="true" mnemonicParsing="false" prefWidth="65.0" text="OK" />
+                <Button cancelButton="true" mnemonicParsing="false" prefWidth="65.0" text="Cancel" />
+            </children>
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" />
+            </padding>
+        </HBox>
+    </children>
+</VBox>

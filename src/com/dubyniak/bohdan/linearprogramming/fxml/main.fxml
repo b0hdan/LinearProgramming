@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dubyniak.bohdan.linearprogramming.controllers.MainController">
+    <children>
+        <TitledPane collapsible="false" minHeight="-Infinity" prefWidth="200.0" text="Purpose function">
+            <content>
+                <HBox prefWidth="200.0" spacing="4.0">
+                    <children>
+                        <Label text="F(x1, x2) =">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="31.0" prefWidth="50.0" promptText="k1" />
+                        <Label text="x1 +">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="31.0" prefWidth="50.0" promptText="k2" />
+                        <Label text="x2 +">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField prefWidth="50.0" promptText="k" />
+                        <Label text="y">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </content>
+        </TitledPane>
+        <TitledPane collapsible="false" minHeight="-Infinity" prefWidth="200.0" text="y">
+            <content>
+                <HBox prefWidth="200.0" spacing="4.0">
+                    <children>
+                        <Label text="y =">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="31.0" prefWidth="50.0" promptText="k1" />
+                        <Label text="x1 +">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="31.0" prefWidth="50.0" promptText="k2" />
+                        <Label text="x2">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </content>
+        </TitledPane>
+        <TitledPane collapsible="false" prefHeight="269.0" prefWidth="600.0" text="Limits">
+            <content>
+                <AnchorPane prefWidth="200.0">
+                    <children>
+                        <ListView fx:id="listView" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="0.0" />
+                        <Button onAction="#plusButtonClicked" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="+" textFill="#249720" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Button>
+                        <Button disable="true" layoutX="10.0" layoutY="10.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" text="-" textFill="RED" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </content>
+        </TitledPane>
+        <AnchorPane prefWidth="200.0">
+            <children>
+                <Button mnemonicParsing="false" prefWidth="100.0" text="Solve" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            </children>
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+            </padding>
+        </AnchorPane>
+    </children>
+</VBox>
