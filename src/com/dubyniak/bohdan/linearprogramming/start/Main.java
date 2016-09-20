@@ -7,12 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    public static Parent mainRoot;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/main.fxml"));
+        mainRoot = FXMLLoader.load(getClass().getResource("../fxml/main.fxml"));
         primaryStage.setTitle("Linear programming");
-        primaryStage.setScene(new Scene(root, 500, 498));
+        primaryStage.setScene(new Scene(mainRoot, 500, 498));
         primaryStage.show();
     }
 

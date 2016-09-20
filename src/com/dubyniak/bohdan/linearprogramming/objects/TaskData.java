@@ -36,7 +36,4 @@ public class TaskData {
         this.limits = limits;
     }
 
-    public void addLimit(Inequality limit) {
-        limits.add(limit);
-    }
 }

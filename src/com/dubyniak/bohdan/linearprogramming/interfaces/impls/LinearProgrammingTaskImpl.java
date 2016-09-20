@@ -27,8 +27,8 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
     public void solve() {
         replaceY();
         changeAllSignsToGreaterEqual();
-        taskData.addLimit(new Inequality(1, 0, 0, ">=", 0));
-        taskData.addLimit(new Inequality(0, 1, 0, ">=", 0));
+        taskData.getLimits().add(new Inequality(1, 0, 0, ">=", 0));
+        taskData.getLimits().add(new Inequality(0, 1, 0, ">=", 0));
         findAllPoints();
         findAreaPoints();
         findMinPointAndValue();
@@ -156,10 +156,7 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
     }
 
     private void findMaxPointAndValue() {
-        if (areaPoints.size() == 0)
-            isMaxPoint = false;
-        else
-            isMaxPoint = true;
+        isMaxPoint = areaPoints.size() != 0;
         maxValue = evaluatePurposeFunctionValue(areaPoints.get(0));
         maxPoint = new Point(areaPoints.get(0));
         for (Point temp : areaPoints) {
