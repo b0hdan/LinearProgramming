@@ -98,9 +98,13 @@ public class MainController {
         if (task.isMinPoint())
             lblMin.setText(String.format("Minimal value: %.2f, " +
                     "point: " + task.getPointOfMinValue() + ".", task.getMinValue()));
+        else
+            lblMin.setText("");
         if (task.isMinPoint())
             lblMax.setText(String.format("Maximal value: %.2f, " +
                     "point: " + task.getPointOfMaxValue() + ".", task.getMaxValue()));
+        else
+            lblMax.setText("");
     }
 
 }

@@ -39,6 +39,6 @@
         </padding>
         <Button onAction="#okButtonClicked" defaultButton="true" mnemonicParsing="false" prefWidth="65.0"
                 text="OK"/>
-        <Button cancelButton="true" mnemonicParsing="false" prefWidth="65.0" text="Cancel"/>
+        <Button onAction="#cancelButtonClicked" cancelButton="true" mnemonicParsing="false" prefWidth="65.0" text="Cancel"/>
     </HBox>
 </VBox>

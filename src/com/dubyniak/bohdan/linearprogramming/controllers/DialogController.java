@@ -38,6 +38,15 @@ public class DialogController {
         ));
         listView.getItems().add(taskData.getLimits().get(taskData.getLimits().size() - 1).toString());
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+        clearWindow();
+    }
+
+    public void cancelButtonClicked(ActionEvent actionEvent) {
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+        clearWindow();
+    }
+
+    private void clearWindow() {
         txtK1.clear();
         txtK2.clear();
         txtYKoef.clear();
