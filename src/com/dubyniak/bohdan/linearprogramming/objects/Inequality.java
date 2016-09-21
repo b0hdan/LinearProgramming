@@ -61,27 +61,27 @@ public class Inequality {
     }
 
     private String formString() {
-        String string = "";
+        String string;
         if (k1 == 0 && (k2 != 0 || yKoef != 0))
             if (k2 != 0)
                 if (yKoef != 0)
-                    string = k2 + "x2 + " + yKoef + "y " + sign + " " + b;
+                    string = k2 + " * x2 + " + yKoef + " * y " + sign + " " + b;
                 else
-                    string = k2 + "x2 " + sign + " " + b;
+                    string = k2 + " * x2 " + sign + " " + b;
             else
-                string = yKoef + "y " + sign + " " + b;
+                string = yKoef + " * y " + sign + " " + b;
         else if (k1 == 0)
             string = "0 " + sign + " " + b;
         else if (k2 != 0 || yKoef != 0)
             if (k2 != 0)
                 if (yKoef != 0)
-                    string = k1 + "x1 + " + k2 + "x2 + " + yKoef + "y " + sign + " " + b;
+                    string = k1 + " * x1 + " + k2 + " * x2 + " + yKoef + " * y " + sign + " " + b;
                 else
-                    string = k1 + "x1 + " + k2 + "x2 " + sign + " " + b;
+                    string = k1 + " * x1 + " + k2 + " * x2 " + sign + " " + b;
             else
-                string = k1 + "x1 + " + yKoef + "y " + sign + " " + b;
+                string = k1 + " * x1 + " + yKoef + " * y " + sign + " " + b;
         else
-            string = k1 + "x1 " + sign + " " + b;
+            string = k1 + " * x1 " + sign + " " + b;
         return string;
     }
 

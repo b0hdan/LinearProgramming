@@ -7,6 +7,7 @@ import com.dubyniak.bohdan.linearprogramming.objects.TaskData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
     private TaskData taskData;
@@ -24,18 +25,10 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
 
     @Override
     public void solve() {
-        taskData.getLimits().add(new Inequality(0, 1, 0, "<=", 12));
-        taskData.getLimits().add(new Inequality(1, -1, 0, ">=", -10));
-        taskData.getLimits().add(new Inequality(8, 1, 0, ">=", 16));
-        taskData.getLimits().add(new Inequality(4, 0, -1, ">=", 10));
-        taskData.getLimits().add(new Inequality(4, 3, 0, ">=", 12));
-        taskData.getLimits().add(new Inequality(-4, 3, 0, ">=", -48));
-        taskData.getLimits().add(new Inequality(-1, 3, 0, ">=", -6));
         taskData.getLimits().add(new Inequality(1, 0, 0, ">=", 0));
         taskData.getLimits().add(new Inequality(0, 1, 0, ">=", 0));
         replaceY();
         changeAllSignsToGreaterEqual();
-
         findAllPoints();
         findAreaPoints();
         findMinPointAndValue();
@@ -48,12 +41,12 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
     }
 
     @Override
-    public List getListOfAllPoints() {
+    public List<Point> getListOfAllPoints() {
         return allPoints;
     }
 
     @Override
-    public List getListOfAreaPoints() {
+    public List<Point> getListOfAreaPoints() {
         return areaPoints;
     }
 
@@ -124,15 +117,13 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
         for (int i = 0; i < taskData.getLimits().size() - 1; i++)
             for (int j = i + 1; j < taskData.getLimits().size(); j++) {
                 Point point = solveByKramer(taskData.getLimits().get(i), taskData.getLimits().get(j));
-                if (point != null)
+                if (point != null && !allPoints.contains(point))
                     allPoints.add(point);
             }
     }
 
     private void findAreaPoints() {
-        for (Point temp : allPoints)
-            if (isAreaPoint(temp))
-                areaPoints.add(temp);
+        areaPoints.addAll(allPoints.stream().filter(this::isAreaPoint).collect(Collectors.toList()));
     }
 
     private Point solveByKramer(Inequality equation1, Inequality equation2) {

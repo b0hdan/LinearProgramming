@@ -13,6 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         mainRoot = FXMLLoader.load(getClass().getResource("../fxml/main.fxml"));
         primaryStage.setTitle("Linear programming");
+        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(mainRoot, 500, 498));
         primaryStage.show();
     }
