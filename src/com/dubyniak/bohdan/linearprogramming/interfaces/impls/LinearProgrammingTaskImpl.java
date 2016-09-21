@@ -2,12 +2,11 @@ package com.dubyniak.bohdan.linearprogramming.interfaces.impls;
 
 import com.dubyniak.bohdan.linearprogramming.interfaces.LinearProgrammingTask;
 import com.dubyniak.bohdan.linearprogramming.objects.Inequality;
+import com.dubyniak.bohdan.linearprogramming.objects.Point;
 import com.dubyniak.bohdan.linearprogramming.objects.TaskData;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
     private TaskData taskData;
@@ -25,10 +24,18 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
 
     @Override
     public void solve() {
-        replaceY();
-        changeAllSignsToGreaterEqual();
+        taskData.getLimits().add(new Inequality(0, 1, 0, "<=", 12));
+        taskData.getLimits().add(new Inequality(1, -1, 0, ">=", -10));
+        taskData.getLimits().add(new Inequality(8, 1, 0, ">=", 16));
+        taskData.getLimits().add(new Inequality(4, 0, -1, ">=", 10));
+        taskData.getLimits().add(new Inequality(4, 3, 0, ">=", 12));
+        taskData.getLimits().add(new Inequality(-4, 3, 0, ">=", -48));
+        taskData.getLimits().add(new Inequality(-1, 3, 0, ">=", -6));
         taskData.getLimits().add(new Inequality(1, 0, 0, ">=", 0));
         taskData.getLimits().add(new Inequality(0, 1, 0, ">=", 0));
+        replaceY();
+        changeAllSignsToGreaterEqual();
+
         findAllPoints();
         findAreaPoints();
         findMinPointAndValue();
@@ -115,40 +122,45 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
 
     private void findAllPoints() {
         for (int i = 0; i < taskData.getLimits().size() - 1; i++)
-            for (int j = i + 1; j < taskData.getLimits().size(); j++)
-                allPoints.add(solveByKramer(taskData.getLimits().get(i), taskData.getLimits().get(j)));
+            for (int j = i + 1; j < taskData.getLimits().size(); j++) {
+                Point point = solveByKramer(taskData.getLimits().get(i), taskData.getLimits().get(j));
+                if (point != null)
+                    allPoints.add(point);
+            }
     }
 
     private void findAreaPoints() {
-        areaPoints.addAll(allPoints.stream().filter(this::isAreaPoint).collect(Collectors.toList()));
+        for (Point temp : allPoints)
+            if (isAreaPoint(temp))
+                areaPoints.add(temp);
     }
 
     private Point solveByKramer(Inequality equation1, Inequality equation2) {
         double determinant = equation1.getK1() * equation2.getK2() - equation1.getK2() * equation2.getK1();
         double determinant1 = equation1.getB() * equation2.getK2() - equation1.getK2() * equation2.getB();
-        double determinant2 = equation1.getK1() * equation2.getB() - equation1.getB() * equation2.getK2();
+        double determinant2 = equation1.getK1() * equation2.getB() - equation1.getB() * equation2.getK1();
+        if (determinant == 0)
+            return  null;
         Point point = new Point();
-        point.setLocation(determinant1 / determinant, determinant2 / determinant);
+        point.setX(determinant1 / determinant);
+        point.setY(determinant2 / determinant);
         return point;
     }
 
     private boolean isAreaPoint(Point point) {
         for (Inequality limit : taskData.getLimits())
-            if (limit.getK1() * point.getX() + limit.getK2() * point.getY() < 0)
+            if (limit.getK1() * point.getX() + limit.getK2() * point.getY() < limit.getB())
                 return false;
         return true;
     }
 
     private void findMinPointAndValue() {
-        if (areaPoints.size() == 0)
-            isMinPoint = false;
-        else
-            isMaxPoint = true;
+        isMinPoint = areaPoints.size() != 0;
         minValue = evaluatePurposeFunctionValue(areaPoints.get(0));
         minPoint = new Point(areaPoints.get(0));
         for (Point temp : areaPoints) {
             double value = evaluatePurposeFunctionValue(temp);
-            if (minValue < value) {
+            if (minValue > value) {
                 minValue = value;
                 minPoint = new Point(temp);
             }
@@ -161,7 +173,7 @@ public class LinearProgrammingTaskImpl implements LinearProgrammingTask {
         maxPoint = new Point(areaPoints.get(0));
         for (Point temp : areaPoints) {
             double value = evaluatePurposeFunctionValue(temp);
-            if (minValue > value) {
+            if (maxValue < value) {
                 maxValue = value;
                 maxPoint = new Point(temp);
             }

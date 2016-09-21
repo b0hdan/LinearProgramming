@@ -24,8 +24,8 @@ public class TaskData {
         return y;
     }
 
-    public void setY(MathematicalExpression y) {
-        this.y = y;
+    public void setY(double k1, double k2) {
+        y = new MathematicalExpression(k1, k2, 0);
     }
 
     public List<Inequality> getLimits() {

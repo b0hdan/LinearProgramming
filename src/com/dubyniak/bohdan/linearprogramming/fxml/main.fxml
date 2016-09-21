@@ -14,19 +14,19 @@
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField prefHeight="31.0" prefWidth="50.0" promptText="k1"/>
+            <TextField fx:id="txtPurposeK1" prefHeight="31.0" prefWidth="50.0" promptText="k1"/>
             <Label text="x1 +">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField prefHeight="31.0" prefWidth="50.0" promptText="k2"/>
+            <TextField fx:id="txtPurposeK2" prefHeight="31.0" prefWidth="50.0" promptText="k2"/>
             <Label text="x2 +">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField prefWidth="50.0" promptText="k"/>
+            <TextField fx:id="txtPurposeYKoef" prefWidth="50.0" promptText="k"/>
             <Label text="y">
                 <font>
                     <Font size="20.0"/>
@@ -41,13 +41,13 @@
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField prefHeight="31.0" prefWidth="50.0" promptText="k1"/>
+            <TextField fx:id="txtYK1" prefHeight="31.0" prefWidth="50.0" promptText="k1"/>
             <Label text="x1 +">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField prefHeight="31.0" prefWidth="50.0" promptText="k2"/>
+            <TextField fx:id="txtYK2" prefHeight="31.0" prefWidth="50.0" promptText="k2"/>
             <Label text="x2">
                 <font>
                     <Font size="20.0"/>

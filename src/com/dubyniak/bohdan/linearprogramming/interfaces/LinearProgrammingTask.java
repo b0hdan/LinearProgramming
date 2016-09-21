@@ -1,8 +1,8 @@
 package com.dubyniak.bohdan.linearprogramming.interfaces;
 
+import com.dubyniak.bohdan.linearprogramming.objects.Point;
 import com.dubyniak.bohdan.linearprogramming.objects.TaskData;
 
-import java.awt.*;
 import java.util.List;
 
 public interface LinearProgrammingTask {
